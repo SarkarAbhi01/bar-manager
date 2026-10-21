@@ -1,0 +1,8 @@
+# PostgreSQL only. Run the API and client with npm (see README).
+services:
+  db:
+    image: postgres:16-alpine
+    environment: { POSTGRES_USER: postgres, POSTGRES_PASSWORD: postgres, POSTGRES_DB: barmanager }
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+volumes: { pgdata: {} }

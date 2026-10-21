@@ -1,0 +1,73 @@
+:root{--bg:#e9eeec;--card:#fbfcfb;--ink:#14201c;--mut:#5d6c66;--line:#cbd5d0;--wine:#8c1d40;--green:#102a22;--ok:#1f7a4d;--warn:#b7791f;--bad:#c0392b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 "Avenir Next","Segoe UI",system-ui,sans-serif}
+header{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:10px 16px;background:var(--green);color:#e8f1ec;position:sticky;top:0;z-index:5}
+.brand{font:600 20px Georgia,serif}
+nav{display:flex;gap:4px;flex-wrap:wrap;flex:1}
+nav button{background:transparent;color:#cfe0d8;border-color:transparent}
+nav button.on{background:#e8f1ec;color:var(--green)}
+button,input,select{font:inherit;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+button{cursor:pointer}button:hover{border-color:var(--wine)}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--wine);outline-offset:1px}
+button.pri{background:var(--wine);color:#fff;border-color:var(--wine);font-weight:600}
+button.danger{color:var(--bad)}button:disabled{opacity:.5;cursor:not-allowed}
+.user{width:100px}
+main{padding:16px;max-width:1150px;margin:auto}
+h3{margin:18px 0 8px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line)}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mut);font-weight:600;background:#f1f5f3}.sortable{cursor:pointer;user-select:none}
+tr.low td:first-child{border-left:4px solid var(--bad)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px}
+.card h4{margin:0 0 4px;color:var(--mut);font-weight:500}.cards .card b{font-size:22px}
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:16px}
+.pending,.UPDATE{color:var(--warn)}.served{color:#2b6cb0}.paid,.CREATE{color:var(--ok)}.cancelled,.DELETE,.err{color:var(--bad)}
+.note{color:var(--mut)}
+.qrgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.qr{text-align:center}.qr img{width:100%;background:#fff;border:1px solid var(--line)}.qr small{color:var(--mut);word-break:break-all}.qr .bar{justify-content:center;margin:8px 0 0}
+.ellip{max-width:420px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.menu{max-width:520px;margin:auto;padding:16px}
+.item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.qty{display:flex;gap:10px;align-items:center}
+.wide{width:100%;margin-top:12px;padding:10px}
+.card select,.card input{width:100%;margin-bottom:8px}
+@media(max-width:800px){.grid{grid-template-columns:1fr}table{display:block;overflow-x:auto}}
+@media print{header,.bar,button,form{display:none!important}.qr{break-inside:avoid}}
+.login{max-width:360px;margin:14vh auto 0}.login h2{font:600 26px Georgia,serif;margin:0 0 14px}.login input{width:100%;margin-bottom:8px}
+/* ---- multi-bar / staff additions ---- */
+.badge{display:inline-block;min-width:18px;margin-left:6px;padding:0 5px;border-radius:9px;background:var(--bad);color:#fff;font:600 11px/18px system-ui;text-align:center}
+.banner{background:#fff3cd;color:#664d03;padding:8px 16px;text-align:center}
+.tot td{font-weight:700;background:#f1f5f3}
+tr.claim td{background:#fff8e6}tr.dim{opacity:.55}
+.block{display:block;color:var(--mut)}.warn{color:var(--warn)!important}
+.acts{white-space:nowrap}.acts button{margin:0 2px 2px 0}
+.narrow{max-width:520px;margin-bottom:12px}.narrow input,.narrow select,.narrow textarea{width:100%;margin-bottom:8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.card form input,.card form select{margin-bottom:6px}
+.switch{display:flex;gap:10px;align-items:flex-start;margin:8px 0;cursor:pointer}
+.switch input{position:absolute;opacity:0;width:1px;height:1px}
+.switch .track{flex:none;width:42px;height:24px;border-radius:12px;background:#b6c2bc;position:relative;transition:background .15s}
+.switch .knob{position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:left .15s}
+.switch input:checked+.track{background:var(--ok)}.switch input:checked+.track .knob{left:21px}
+.switch input:focus-visible+.track{outline:2px solid var(--wine);outline-offset:2px}
+.switch small{display:block;color:var(--mut);font-weight:400}.switch.off{opacity:.5}
+textarea{font:inherit;width:100%;border:1px solid var(--line);border-radius:6px;padding:8px 10px;margin-bottom:8px}
+@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+/* customer (phone) page */
+.cust{padding:0 14px 90px}
+.chead{position:sticky;top:0;background:var(--bg);padding:12px 0 8px;z-index:3}.chead h2{margin:0;font:600 22px Georgia,serif}
+.cust input,.cust textarea{width:100%;margin-bottom:8px;padding:10px;font-size:16px}  /* 16px stops iOS zooming on focus */
+.cust button{padding:10px 14px;min-height:44px}
+.qty button{width:44px;font-size:20px}
+.stickybtn{position:sticky;bottom:64px;padding:8px 0;background:linear-gradient(transparent,var(--bg) 30%)}
+.bnav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--green);padding-bottom:env(safe-area-inset-bottom);z-index:5}
+.bnav button{flex:1;background:transparent;color:#cfe0d8;border:0;border-radius:0;font-size:12px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.bnav button span{font-size:20px}.bnav button.on{color:#fff;background:#1c4636}
+.ord .row{display:flex;justify-content:space-between}.ord{margin-bottom:10px}.lines{color:var(--mut);margin:6px 0}
+.steps{display:flex;gap:6px;list-style:none;padding:0;margin:10px 0}
+.steps li{flex:1;text-align:center;padding:6px 0;border-radius:6px;background:#dfe6e2;color:var(--mut);font-size:13px}
+.steps li.done{background:var(--ok);color:#fff}
+.pay{display:grid;gap:8px;margin-top:8px}.btn{display:block;text-align:center;padding:12px;border-radius:6px;text-decoration:none;font-weight:600;background:var(--wine);color:#fff}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px}
+.stars{display:flex;gap:6px;margin:8px 0}.stars button{font-size:28px;color:#b6c2bc;padding:0 8px}.stars button.on{color:#e0a800}
