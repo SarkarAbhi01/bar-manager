@@ -48,26 +48,6 @@ app.use('/api/super', superRouter);
 
 
 
-
-
-
-app.get('/api/health', async (req, res) => {
-  try {
-    await pool.query('SELECT 1');
-    res.json({ status: 'ok', database: 'connected' });
-  } catch (err) {
-    console.error('Health check failed:', err);
-    res.status(500).json({
-      status: 'error',
-      database: 'disconnected'
-    });
-  }
-});
-
-
-
-
-
 const attempts = new Map();
 app.post('/api/auth/login', h(async (req, res) => {
   const k = req.ip, a = attempts.get(k) || { n: 0, t: Date.now() };
