@@ -46,6 +46,28 @@ app.use('/api', (req, res, next) => (req.path.startsWith('/public/') || req.path
 app.use('/api', (req, res, next) => req.user?.role === 'superadmin' && !/^\/(super|me|backup|account)(\/|$)/.test(req.path) ? res.status(403).json({ error: 'Use a bar login for this' }) : next());
 app.use('/api/super', superRouter);
 
+
+
+
+
+
+app.get('/api/health', async (req, res) => {
+  try {
+    await pool.query('SELECT 1');
+    res.json({ status: 'ok', database: 'connected' });
+  } catch (err) {
+    console.error('Health check failed:', err);
+    res.status(500).json({
+      status: 'error',
+      database: 'disconnected'
+    });
+  }
+});
+
+
+
+
+
 const attempts = new Map();
 app.post('/api/auth/login', h(async (req, res) => {
   const k = req.ip, a = attempts.get(k) || { n: 0, t: Date.now() };
